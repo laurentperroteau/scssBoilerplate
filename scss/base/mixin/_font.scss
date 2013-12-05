@@ -1,0 +1,183 @@
+
+// ::: F O N T   M I X I N S ::: //
+// ------------------------------//
+
+// Construct your own mixin duplicate this example of Google Font Face
+// ===================================================================
+// @param $fontSize (optional) => font-size in px (without "px")
+// @param $lineHeight (optional) => line-height in px (without "px")
+// @return font-family with options font-style and font-weight... 
+//         and optionally with font-size (rem and px) and line-height (rem and px)...
+//         in one single line like: "font: italic 600 15rem/17rem 'Open Sans', sans-serif, sans-serif"
+// @use: @include italic(15 17);
+@mixin openItalic($param: null) {
+    // Set your parameters for the fond-face
+    $fontFamily: 'Open Sans', sans-serif;
+    $fontStyle: italic;
+    $fontWeight: 600;
+    
+    @include constructFontMixin($fontFamily, $param, $fontStyle, $fontWeight);
+}
+
+
+// Another example of mixin for font-face (not google font)
+// ========================================================
+// @mixin regular($param: null) {
+//     $fontFamily: 'OswaldRegular', sans-serif;
+
+//     @include constructFontMixin($fontFamily, $param);
+// }
+
+
+// Example for "classic" web font
+// ==============================
+// @param $styleOrWeight (optional) =>  a style or weight number (can't both)
+// @param $fontSize (optional)      => font-size in px (without "px")
+// @param $lineHeight (optional)    => line-height in px (without "px")
+// @use: @include arial(bold 15 17);
+@mixin arial($param: null) {
+    // Set font family
+    $fontFamily: arial, 'helvetica', sans-serif;
+
+    @include constructFontMixin($fontFamily, $param);
+}
+
+
+// Set font-size in REM (and pixels for IE8-)
+// ==========================================
+// @param $fontSize => font-size in px (without "px")
+// @param $lineHeight (optional) => line-height in px (without "px")
+@mixin fontSize($param: null) 
+{
+    // Declare and get variables
+    $fontSize: null; $lineHeight: null;
+
+    @if $param              { $fontSize:   nth($param, 1); }
+    @if length($param) >= 2 { $lineHeight: nth($param, 2); }
+
+    font-size: px($fontSize);
+    font-size: rem($fontSize);
+    
+    @if $lineHeight {
+        @include lineHeight($lineHeight);
+    }
+}
+
+
+// Set line-height in REM (and pixels for IE8-)
+// ============================================
+// @param $lineHeight => line-height in px (without "px")
+@mixin lineHeight($lineHeight) {
+    line-height: px($lineHeight);
+    line-height: rem($lineHeight);
+}
+
+
+// Set styles for placeholder (cross browsers solution)
+// ====================================================
+// => https://github.com/michaelsacca/Compass-Placeholder-Text-Mixin
+// @use: 
+//     @include placeholder {
+//         color: $colorPlaceholder;
+//     }
+@mixin placeholder {
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; } 
+}
+
+
+// Mixin useful for construct font mixin => see example above
+@mixin constructFontMixin($fontFamily, $param: null, $style: null, $weight: null) 
+{
+    // Declare all variable (null if empty)
+    @if( $style == "")  { $style:  null }
+    @if( $weight == "") { $weight: null }
+    $fontSize: null; $lineHeight: null; $styleAndWeight: null; $sizesPx: null; $sizesRem: null;
+
+    // Split $param list depend value
+    @if $param { 
+        
+        $firstArg: nth($param, 1);
+
+        // If first argument is size
+        @if type-of($firstArg) == number and $firstArg < 99 
+        {
+            $fontSize: $firstArg;
+            @if length($param) >= 2 { $lineHeight: nth($param, 2) }
+        }
+        @else 
+        {
+            // Whether if $firstArg is a style or weight number (can't both)
+            @if $firstArg == bold or type-of($firstArg) == number {
+                $weight: $firstArg;
+            }
+            @else {
+                $style: $firstArg;
+            }
+            
+            @if length($param) >= 2 { $fontSize:   nth($param, 2) }
+            @if length($param) >= 3 { $lineHeight: nth($param, 3) }
+        }
+    }
+
+    // Construct style and weight
+    @if $style and $weight {
+        $styleAndWeight: #{$style} #{$weight};
+    }
+
+    // Construct font-size and line-height
+    @if $fontSize and $lineHeight {
+        $sizesPx:  #{ px($fontSize) }/#{ px($lineHeight) };
+        $sizesRem: #{ rem($fontSize) }/#{ rem($lineHeight) };
+    }
+    @else if $fontSize {
+        $sizesPx:  #{ px($fontSize) };
+        $sizesRem: #{ rem($fontSize) };
+    }
+
+    @debug $sizesRem;
+
+    // Final style without sizes
+    @if not $sizesRem 
+    {
+        font-family: $fontFamily;
+
+        @if $style and $weight {
+            font-style: $style;
+            font-weight: $weight;
+        }
+        @if $style and not $weight {
+            font-style: $style;
+        }
+        @else if not $style and $weight {
+            font-weight: $weight;
+        }
+    }
+    // Final style with sizes
+    @else 
+    {
+        @if $styleAndWeight {
+            font: #{$styleAndWeight} #{$sizesPx} $fontFamily;
+            font: #{$styleAndWeight} #{$sizesRem} $fontFamily;
+        }
+        @else if ($style or $weight) {
+            font: #{$style}#{$weight} #{$sizesPx} $fontFamily;
+            font: #{$style}#{$weight} #{$sizesRem} $fontFamily;
+        }
+        @else if not $style and not $weight {
+            font: #{$sizesPx} $fontFamily;
+            font: #{$sizesRem} $fontFamily;
+        }
+    }
+
+    // @debug "fontFamily : " $fontFamily;
+    // @debug "style : " $style;
+    // @debug "weight : " $weight;
+    // @debug "fontSize : " $fontSize;
+    // @debug "lineHeight : " $lineHeight;
+    // @debug "styleAndWeight : " $styleAndWeight;
+    // @debug "sizesPx : " $sizesPx;
+    // @debug "sizesRem : " $sizesRem;
+}

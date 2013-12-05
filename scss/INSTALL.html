@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Install SASS</title>
+        <style type="text/css">
+            body {
+                max-width: 1020px;
+                margin: 0 auto;
+                font: 15px arial, sans-serif; color: #222;
+            }
+            img { width: 350px }
+            a { color: #CC6699 }
+            .right { float: right;} 
+            .title { border-bottom: 3px solid #CC6699;}
+            h2 { margin-top: 30px;}
+            li { margin: 3px 0; }
+            b {
+                display: inline-block;
+                padding: 2px 5px;
+                background-color: #eee; border: 1px solid #bbb; border-radius: 3px;
+                font: 12px courier; color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="http://sass-lang.com/assets/img/logo-235e394c.png" class="right" />
+        
+        <h1 class="title">Installer SASS / Compass en 5min</h1>
+        <ol>
+            <li>Installer Ruby pour Windows avec le <a href="http://www.google.com/url?q=http%3A%2F%2Frubyinstaller.org%2Fdownloads%2F&sa=D&sntz=1&usg=AFQjCNErUhsL9fOlow5sN5Jl6BzPVAsh-Q" target="_blank">Ruby Installer</a> (la version recommandé) en cochant “Add Ruby executables to your Path”</li>
+            <li><i>Le reste de l'instalation se passera dans le terminal</i></li>
+            <li><b>ruby --help</b> pour vérifier qu’il est bien installer</li>
+            <li><b>gem install sass</b> (attendre instalation)</li>
+            <li><b>gem install compass</b> (attendre instalation)</li>
+            <li>Ouvrir le chemin vers le dossier qui contient cette page <b>cd c:\...\NameProject\scss</b></li>
+            <li>
+                <b>compass watch</b> pour lancer la compilation
+                <ol>
+                    <li>Si nouveau projet: un fichier <i>nameProject.css</i>i> est crée dans un dossier CSS</li>
+                    <li>Si projet déjà débuté: tout est prêt pour travailler dans les fichiers <i>.scss</i>
+                </ol>
+            </li>
+            <li><b>ctrl + C</b> pour arrêter compass</li>
+        </ol>
+
+        <h2 class="title">De la doc</h2>
+        <ul>
+            <li>Un aperçu du languages sur le site de <a href="http://sass-lang.com/guide" target="_blank">SASS</a></li>
+            <li>Toutes les mixins et featuring de <a href="http://compass-style.org/" target="_blank">Compass</a></li>
+        </ul>
+
+        <h2 class="title">Différences avec LESS</h2>
+        <ul>
+            <li>Les fichiers qui commence par "underscore" ne sont pas compilé.</li>
+            <li>Le nesting est le même.</li>
+            <li>Les variables commence par <b>$</b>.</li>
+            <li>Les mixins commence par <b>@</b>.</li>
+            <li>Les sprites d'icône sont générés automatiquement (dans ce thème 2 icônes sont appelé avec un mixin, le normal et le rétina).</li>
+            <li>
+                On peut utiliser des fonctions, ex :<br />
+                <b>@function response($target, $container) {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp; @return $target / $container * 100%;<br />
+                }<br />
+                width: response($widthContent, $widthMain);</b>
+            </li>
+            <li>On peux "extend" les classes (a utiliser avec précautions).</li>
+        </ul>
+
+        <h2 class="title">Deux commandes utiles</h2>
+        <ul>
+            <li><b>compass compile -e devopement --force</b> pour passer en mode "dévelopement/production"</li>
+            <li><b>compass compile -c config.rb --force</b> pour forcer le fichier <i>config.rb</i> si besoin</li>
+        </ul>
+    </body>
+</html>

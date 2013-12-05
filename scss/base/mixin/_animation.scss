@@ -1,0 +1,20 @@
+
+// ::: A N I M A T I O N   M I X I N S ::: //
+// ----------------------------------------//
+
+
+// Call the Compass mixin "single-transition" with default value of base.scss
+// ==========================================================================
+// => @see: http://compass-style.org/reference/compass/css3/transition/
+@mixin trans($property, $duration: $duration, $ease: $easeSlide, $delay: $delay) 
+{
+    @include single-transition($property, $duration, $ease, $delay);
+}
+
+// Useful for keyframes
+@mixin animated($duration) {
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-duration: $duration;
+    animation-fill-mode: both;
+    animation-duration: $duration;
+}

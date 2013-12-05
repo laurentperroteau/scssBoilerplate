@@ -1,0 +1,62 @@
+
+// ::: L A Y O U T   M I X I N S ::: //
+// ----------------------------------//
+
+// Set a cube
+// ==========
+// @param $size => size of cube (pass unit if not want px)
+@mixin cube($size) {
+    width: testUnit($size); height: testUnit($size);
+}
+
+// Set a circle
+// ===========
+// @param $size => size of circle (pass unit if not want px)
+@mixin circle($size) {
+    width: testUnit($size); height: testUnit($size);
+    @include border-radius( testUnit($size) );
+}
+
+
+// Set a triangle
+// =========================================
+// @param $width/$height => size of triangle
+// @param $direction     => up, down, right or left
+// @param $background     => background color of triangle
+// @see: http://minimalmonkey.com/sass-triangle-mixin/
+@mixin triangle($param) {
+    
+    $width: null; $height: null; $direction: up; $background: black;
+
+    @if $param              { $width:      nth($param, 1); }
+    @if length($param) >= 2 { $height:     nth($param, 2); }
+    @if length($param) >= 3 { $direction:  nth($param, 3); }
+    @if length($param) >= 4 { $background: nth($param, 4); }
+  
+    width: 0;
+    height: 0;
+  
+    @if $direction == right {
+        border-top: testUnit( round($height) / 2) solid transparent;
+        border-bottom: testUnit( round($height) / 2) solid transparent;
+        border-left: testUnit($width) solid $background;
+    }
+
+    @if $direction == left {
+        border-top: testUnit( round($height) / 2) solid transparent;
+        border-bottom: testUnit( round($height) / 2) solid transparent;
+        border-right: testUnit($width) solid $background;
+    }
+
+    @if $direction == up {
+        border-left: testUnit( round($width) / 2) solid transparent;
+        border-right: testUnit( round($width) / 2) solid transparent;
+        border-bottom: testUnit($width) solid $background;
+    }
+
+    @if $direction == down {
+        border-left: testUnit( round($width) / 2) solid transparent;
+        border-right: testUnit( round($width) / 2) solid transparent;
+        border-top: testUnit($width) solid $background;
+    }
+}

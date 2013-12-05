@@ -1,0 +1,102 @@
+
+/* -------------------- */
+/* ::: L A Y O U T  ::: */
+/* -------------------- */
+
+*, *:before, *:after { @include box-sizing(border-box) }
+
+body {
+    background: $backBody;
+}
+
+.wrapper {
+    max-width: $mobile;
+    margin: 0 auto;
+}
+
+ul, li { list-style: none; margin: 0; padding: 0 }
+
+
+// ::: M O B I L E ::: //
+// ------------------- //
+
+@media #{$mobile} { 
+
+}
+
+
+// ::: H I G H E R  (tablet and desktop) ::: //
+// ----------------------------------------- //
+
+@media #{$higher} { 
+
+}
+
+
+// ::: T A B L E T ::: //
+// ------------------- //
+
+@media #{$tablet} { 
+
+}
+
+// ::: D E S K T O P ::: //
+// --------------------- //
+
+@media #{$desktop} { 
+
+}
+
+
+/* ::: J S , F L O A T  &   V I S I B I L I T Y   C L A S S E S ::: */
+/* ---------------------------------------------------------------- */
+
+.pull-left { float: left }
+.pull-right { float: right }
+
+@media #{$mobile} { 
+
+    #m { display: block !important }
+    #h, #t, #d, .hide-m { display: none !important }
+
+    .pull-left-m { float: left }
+    .pull-right-m {float: right }
+
+    .pull-left-h, .pull-right-h { float: none }
+}
+@media #{$higher} { 
+
+    #h { display: block !important }
+    #m, #t, #d, .hide-h { display: none !important }
+
+    .pull-left-h { float: left }
+    .pull-right-h {float: right }
+
+    .pull-left-m, .pull-right-m { float: none }
+}
+@media #{$tablet} { 
+
+    #t { display: block !important }
+    #m, #d, .hide-t { display: none !important }
+
+    .pull-left-t { float: left }
+    .pull-right-t {float: right }
+
+    .pull-left-m, .pull-right-m, .pull-left-d, .pull-right-d { float: none }
+}
+@media #{$desktop} { 
+
+    #d { display: block !important }
+    #m, #t, .hide-d { display: none !important }
+
+    .pull-left-d { float: left }
+    .pull-right-d { float: right }
+
+    .pull-left-m, .pull-right-m, .pull-left-t, .pull-right-t { float: none }
+}
+
+
+// Visibility class for the touch enabled devices of modernizr
+// @see: http://modernizr.com/docs/#touch
+.touch .no-on-touch,
+.no-touch .yes-on-touch { display: none }

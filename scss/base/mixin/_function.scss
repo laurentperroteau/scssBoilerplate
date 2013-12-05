@@ -1,0 +1,88 @@
+
+// ::: F U N C T I O N S ::: //
+// --------------------------//
+
+// Remove unit of number
+@function stripUnits($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+// Converted pixel
+@function px($number) {
+    @return stripUnits($number) * 1px;
+}
+
+// Converted REM
+@function rem($number) {
+    @return stripUnits($number) / 10 + 0rem
+}
+
+// Return number with unit px, em, %...
+// ====================================
+// @use: testUnit(15)   => 15px
+// @use: testUnit(0)    => 0
+// @use: testUnit(15em) => 15em
+@function testUnit($number) 
+{
+    @if unit($number) == "" {
+        @if $number == 0 {
+            @return 0;
+        }
+        @else {
+            @return stripUnits($number) * 1px;
+        }
+    }
+    @else {
+        @return $number;
+    }
+}
+
+// Pour calculer un % en responsive (a tester)
+@function response($param) 
+{
+    @if length($param) > 1 
+    { 
+        $target:    nth($param, 1);
+        $container: nth($param, 2);
+
+        @return percentage( stripUnits($target) / stripUnits($container) );
+    }
+    @else {
+        @warn "You need 2 parameters for response function";
+    }
+}
+
+// Return font-style or font-weight (useful only for font mixin)
+@function getStyleAndWeight($styleOrWeight) {
+    $fontStyle: '';
+    $fontWeight: '';
+
+    @if $styleOrWeight == bold or type-of($styleOrWeight) == number {
+        $fontWeight: $styleOrWeight;
+    }
+    @else {
+        $fontStyle: $styleOrWeight;
+    }
+
+    $listResult:$fontStyle,$fontWeight;
+    @return $listResult;
+}
+
+// Remove element in list
+// ======================
+// @see: http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+@function remove($list, $value, $recursive: false) {
+  $result: ();
+
+  @for $i from 1 through length($list) {
+    @if type-of( nth($list, $i) ) == list and $recursive {
+      $result: append($result, remove(nth($list, $i), $value, $recursive));
+    }
+
+    @else if nth($list, $i) != $value {
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}

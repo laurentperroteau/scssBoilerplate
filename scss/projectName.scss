@@ -1,0 +1,66 @@
+
+/* ------------------------------- */
+/* ::: P R O J E C T   N A M E ::: */
+/* ------------------------------- */
+
+// C O M P A S S (import only necessary)
+// -------------------------------------
+
+@import "compass/utilities/sprites/base";
+@import "compass/css3/images";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/box-sizing";
+@import "compass/css3/opacity";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+
+
+
+// B A S E (variables and custom mixins/functions)
+// -----------------------------------------------
+
+@import "base/mixin";
+
+@import "base/base"; // => all variables
+
+
+
+// G L O B A L (global style for sections and pages)
+// ------------------------------------------------
+ 
+/* Reset of Eric Mayer */
+@import "compass/reset";
+
+@import "global/helpers";
+
+@import "global/typography";
+
+@import "global/sprite";
+
+@import "global/layout";
+
+@import "global/form";
+
+
+
+// S E C T I O N (section/block used in all pages)
+// -------------------------------------------------------------
+
+@import "section/block";
+
+@import "section/header";
+
+
+
+// P A G E (specific stylesheet of type of page)
+// --------------------------------------------
+
+@import "page/page";
+
+
+
+// Conditional overrides
+// ----------------------
+
+@import "global/conditional";

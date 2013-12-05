@@ -1,0 +1,102 @@
+
+// ::: P O S I T I O N   M I X I N S ::: //
+// --------------------------------------//
+
+// Cancel padding
+// ==============
+// @param $sizes => pass list of positions
+// @use: @include clPadding; => padding: 0;
+// @use: @include clPadding(top left); => padding-top: 0; padding-left: 0;
+@mixin clPadding($sizes: null) 
+{
+    @if $sizes {
+        @each $size in $sizes {
+            padding-#{$size}: 0;
+        }
+    }
+    @else {
+        padding: 0;
+    }
+}
+
+
+// Cancel margin (@see clPadding)
+// ==============================
+@mixin clMargin($sizes: null) 
+{
+    @if $sizes {
+        @each $size in $sizes {
+            margin-#{$size}: 0;
+        }
+    }
+    @else {
+        margin: 0;
+    }
+}
+
+
+// Align text verticaly in the middle (use only if one line)
+// =========================================================
+// @param $size => height of container (pass unit if not want px)
+// @use: @include alignVertically(15); 
+//       => height: 15px; line-height: 15px;
+@mixin alignVertically($size: null) 
+{
+    @if $size {
+        height: testUnit($size); line-height: testUnit($size);
+    }
+    @else {
+        @warn "You need pass a size at alignVertically mixin."
+    }
+}
+
+
+// Set absolute positions
+// ======================
+// @param $positions => pass list of positions (pass unit if not want px)
+// @use @include absolute(auto 0 15%) => position: absolute; top: 0; right: 15%;
+@mixin absolute($positions) 
+{
+    position: absolute; 
+    @include position($positions);
+}
+
+
+// Set fixed positions (@see absolute)
+// ===================================
+@mixin fixed($param) 
+{
+    position: fixed; 
+    @include position($param);
+}
+
+
+// Set positions (useful for absolute and fixed mixin)
+// ===================================================
+// @param $positions => pass list of positions
+// @see absolute for example
+// @set $orderPositionName in base.scss
+@mixin position($positions) 
+{
+    @for $i from 1 through length($positions) 
+    {
+        $posNum:  nth($positions, $i);
+
+        @if $posNum != 'auto' {   
+            #{nth($orderPositionName, $i)}: testUnit($posNum);
+        }
+    }
+}
+
+
+// Cancel position
+// ===============
+// @param $positions => pass list of positions
+// @use: @include clAbsolute(top right); => position: relative; top: auto; right: auto;
+@mixin clPosition($positions) {
+    position: relative;
+
+    @each $position in $positions {
+        #{$position}: auto;
+    }
+}

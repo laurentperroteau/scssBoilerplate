@@ -1,0 +1,97 @@
+
+// ::: C O M P A S S   V A R I A B L E S  ::: //
+// ------------------------------------------ //
+
+// Active SVG for gradients (for IE9)
+// @see: http://stackoverflow.com/questions/8927875/how-to-make-cross-browser-gradient-mixin-in-compass-with-ie9-ie8-ie7-and-oper
+$experimental-support-for-svg: true;
+
+
+// ::: V A R I A B L E S ::: //
+// ------------------------- //
+
+
+// M I X I N
+// =========
+
+// Order of positions used in position mixins (absolute and fixed)
+$orderPositionName: left top right bottom;
+
+
+// T R A N S I T I O N
+// ===================
+
+$duration: 300ms;
+// Custom easing: @see => http://matthewlein.com/ceaser/
+$easeFade: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeSlide: cubic-bezier(1, 0, 0, 1); 
+$easeProg: cubic-bezier(0.000, 0.650, 0.705, 0.920);
+$delay: 300ms;
+
+
+// I M A G E
+// =========
+
+// Image path
+// @use: url( #{$img}image.jpg )
+$img: "/img/visual/";
+
+// Sprites
+$spritePath: "icon/*.png";
+$sprite2xPath: "icon-2x/*.png";
+$pseudoSelector: before;
+
+// B R E A K P O I N T
+// ===================
+
+$mobileBreakpoint: 320px;
+$tabletBreakpoint: 720px;
+$desktopBreakpoint: 980px;
+
+// @use: @media #{$mobile} { //styles... }
+$mobile: "only screen and (max-width: #{$tabletBreakpoint})";
+$higher: "only screen and (min-width: #{$tabletBreakpoint})";
+$tablet: "only screen and (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint})";
+$desktop: "only screen and (min-width: #{$desktopBreakpoint})";
+
+
+// S I Z E
+// =======
+
+$paddWrapper: 15px;
+$borderRadius: 5px;
+
+
+// F O N T   S I Z E
+// =================
+
+$baseFontSize: 13;
+$baseLineHeight: 14;
+
+
+// C O L O R
+// =========
+
+// When number higher, is darker
+$gray1: #f3f7e6;
+$gray2: #eaeff3;
+$gray3: #333;
+
+$blue: #2c5368;
+
+$orange: #ff5e2e;
+
+
+// E L E M E N T ' S   C O L O R S
+// ===============================
+
+// Fonts
+$color: $gray3; // default color
+
+$colorLink: $orange;
+$colorLinkHover: black;
+
+$colorTitle: $blue;
+
+// Backgrounds
+$backBody: $gray1;

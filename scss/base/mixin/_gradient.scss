@@ -1,0 +1,44 @@
+
+// ::: G R A D I E N T   M I X I N S ::: //
+// --------------------------------------//
+ 
+// Linear grandient cross-browsers solution (IE7+)
+// ===============================================
+// @param $startColor => top or left color
+// @param $endColor => bottom or right color
+// @param $horizontal => pass "horizontal" if need horizontal gradient
+// @use: @include linearGradient(#666 #ccc); => http://compass-style.org/examples/compass/css3/gradient/
+// @set svg support for IE9 in base.scss
+@mixin linearGradient($param) 
+{
+    $horizontal: "";
+
+    @if length($param) > 1 
+    { 
+        $startColor: nth($param, 1);
+        $endColor:   nth($param, 2);
+        @if length($param) == 3 { $horizontal: nth($param, 3) }
+
+        background-color: $startColor;
+        @include filter-gradient($startColor, $endColor, $horizontal);
+
+        @if $horizontal == horizontal {
+            @include background-image( linear-gradient(left, $startColor, $endColor) );
+        }
+        @else {
+            @include background-image( linear-gradient($startColor, $endColor) );
+        }
+    }
+    @else {
+        @warn "You need 2 or 3 parameters for linearGradient mixin";
+    }
+}
+
+
+// Remove fully and properly "linearGradient" mixin
+// ================================================
+@mixin removeLinearGradient() {
+    background-color: transparent;
+    filter: none;
+    background-image: none;
+}

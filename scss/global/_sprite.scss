@@ -1,0 +1,23 @@
+
+/* --------------------- */
+/* ::: S P R I T E S ::: */
+/* --------------------- */
+
+// Use with "sprite" mixin (in image.scss)
+$sprites: sprite-map($spritePath);
+$sprites2x: sprite-map($sprite2xPath);
+
+.icon:#{$pseudoSelector}, %icon:#{$pseudoSelector} { 
+    content: '';
+    position: relative; z-index: 1; overflow: hidden;
+    display: inline-block;
+    background-repeat: no-repeat; background-image: sprite-url($sprites); 
+    // We can't call this directly in mixin, Compass will compile each time the import of sprite image
+
+    @media (-webkit-min-device-pixel-ratio: 1.5),
+           (-o-min-device-pixel-ratio: 3/2), 
+           (min-device-pixel-ratio: 1.5) {
+        background-image: sprite-url($sprites2x);
+        background-size: ceil(image-width(sprite-path($sprites2x)) / 2) auto;
+    }
+}
