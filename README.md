@@ -3,7 +3,7 @@ Simple SCSS-Compass Boilerplate
 
 > Included sprite (retina) and font size REM ready-to-use .
 
-[French Version](https://laurentperroteau.com)
+<!--[French Version](https://laurentperroteau.com)-->
 
 ## The idea
 
