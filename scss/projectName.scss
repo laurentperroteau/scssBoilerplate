@@ -1,4 +1,3 @@
-
 /* ------------------------------- */
 /* ::: P R O J E C T   N A M E ::: */
 /* ------------------------------- */
@@ -36,7 +35,8 @@
 
 @import "global/typography";
 
-@import "global/sprite";
+// Uncomment to active sprite (need at least 1 image in /icon and /icon-2x folders)
+// @import "global/sprite";
 
 @import "global/layout";
 
