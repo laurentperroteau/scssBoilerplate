@@ -47,51 +47,60 @@ ul, li { list-style: none; margin: 0; padding: 0 }
 }
 
 
-/* ::: J S , F L O A T  &   V I S I B I L I T Y   C L A S S E S ::: */
-/* ---------------------------------------------------------------- */
+/* ::: V I S I B I L I T Y ,  F L O A T  &  J A V A S C R I P T  C L A S S E S ::: */
+/* --------------------------------------------------------------- */
 
-.pull-left { float: left }
-.pull-right { float: right }
+// ".hide-m", "hide-h", "hide-t" and "hide-d" are classes to hide according to the device
+// @use: <div class="hide-m">...</div> => hide element only on mobile
+
+// ".left", ".left-m", ".left-h" etc... are classes to float according to the device
+// @use: <div class="left-d">...</div> => float elelement only on desktop
+
+// "#m", "#t", "h" and "d" are classes useful for JavaScript
+// @use: if( document.getElementById(id).style.display=="block" ) { // do something... }
+
+.left { float: left }
+.right { float: right }
 
 @media #{$mobile} { 
 
     #m { display: block !important }
     #h, #t, #d, .hide-m { display: none !important }
 
-    .pull-left-m { float: left }
-    .pull-right-m {float: right }
+    .left-m { float: left }
+    .right-m {float: right }
 
-    .pull-left-h, .pull-right-h { float: none }
+    .left-h, .right-h { float: none }
 }
 @media #{$higher} { 
 
     #h { display: block !important }
     #m, #t, #d, .hide-h { display: none !important }
 
-    .pull-left-h { float: left }
-    .pull-right-h {float: right }
+    .left-h { float: left }
+    .right-h {float: right }
 
-    .pull-left-m, .pull-right-m { float: none }
+    .left-m, .right-m { float: none }
 }
 @media #{$tablet} { 
 
     #t { display: block !important }
     #m, #d, .hide-t { display: none !important }
 
-    .pull-left-t { float: left }
-    .pull-right-t {float: right }
+    .left-t { float: left }
+    .right-t {float: right }
 
-    .pull-left-m, .pull-right-m, .pull-left-d, .pull-right-d { float: none }
+    .left-m, .right-m, .left-d, .right-d { float: none }
 }
 @media #{$desktop} { 
 
     #d { display: block !important }
     #m, #t, .hide-d { display: none !important }
 
-    .pull-left-d { float: left }
-    .pull-right-d { float: right }
+    .left-d { float: left }
+    .right-d { float: right }
 
-    .pull-left-m, .pull-right-m, .pull-left-t, .pull-right-t { float: none }
+    .left-m, .right-m, .left-t, .right-t { float: none }
 }
 
 
