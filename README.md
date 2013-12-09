@@ -22,9 +22,7 @@ __Require__ : 2 images with the same name (in folders `/icon` and `/icon2x`) and
 __Caution__ : 
 
 - The size of image "retina" must be exactly twice.
-
 - Never call within "media-queries".
-
 - Incompatible with IE7 because pseudo-selectors but structure easily modified if necessary. 
 
 
