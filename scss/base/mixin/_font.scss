@@ -1,4 +1,3 @@
-
 // ::: F O N T   M I X I N S ::: //
 // ------------------------------//
 
@@ -136,8 +135,6 @@
         $sizesPx:  #{ px($fontSize) };
         $sizesRem: #{ rem($fontSize) };
     }
-
-    @debug $sizesRem;
 
     // Final style without sizes
     @if not $sizesRem 
