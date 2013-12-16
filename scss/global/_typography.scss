@@ -1,4 +1,3 @@
-
 /* --------------------------- */
 /* ::: T Y P O G R A P H Y ::: */
 /* --------------------------- */
@@ -41,3 +40,6 @@ h1, h2, h3, h4, h5, h6 {
 strong { font-weight: bold }
 
 em { font-style: italic }
+
+// Wrapping Long Text and URLs
+.force-wrap { @include force-wrap }
