@@ -48,7 +48,7 @@ __Caution__ :
 Use :
 
 ```css
-@include openItalic(15, 17); // arguments retunr sizes of font
+@include openItalic(15 17); // arguments retunr sizes of font
 @include arial(bold 13 14);  // another example for "web font" in bold
 ```
 
@@ -60,20 +60,20 @@ Use :
 * __Position__ : 2 mixins to cancel padding/margin, 1 mixin to align vertically and 4 mixins for the property "position".
 
 ```css
-@include absolute(auto, 5, 10%); // return an "absolute" absolute with top: 5px and right: 10%
+@include absolute(auto 5 10%); // return an "absolute" absolute with top: 5px and right: 10%
 @include clAbsolute(top right);  // cancel previous styles
 ```
 
 * __Shape__ : 3 mixins to create geometric shapes (cube, circle and triangle).
 
 ```css
-@include triangle(20, 20, down, $orange); // a 20px witdh triangle oriented downward 
+@include triangle(20 20 down $orange); // a 20px witdh triangle oriented downward 
 ```
 
 * __Gradient__ : 1 mixin to create a "linear-gradient" cross-browser (IE7+).
 
 ```css
-@include linearGradient(#666, #ccc); 
+@include linearGradient(#666 #ccc); 
 ```
 
 _For all dimensions, we can pass the number without the unit if we want pixeles or within unit if `%`, `em` or others._
