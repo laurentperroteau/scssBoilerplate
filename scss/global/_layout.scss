@@ -4,6 +4,10 @@
 
 *, *:before, *:after { @include box-sizing(border-box) }
 
+ul, li { list-style: none; margin: 0; padding: 0 }
+
+img { max-width: 100%; height: auto }
+
 body {
     background: $backBody;
 }
@@ -12,8 +16,6 @@ body {
     max-width: $mobileBreakpoint;
     margin: 0 auto;
 }
-
-ul, li { list-style: none; margin: 0; padding: 0 }
 
 
 // ::: M O B I L E ::: //
