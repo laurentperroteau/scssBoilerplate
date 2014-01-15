@@ -38,14 +38,16 @@ body {
 // ------------------- //
 
 @media #{$tablet} { 
-
+    
+    .wrapper { max-width: $tabletBreakpoint }
 }
 
 // ::: D E S K T O P ::: //
 // --------------------- //
 
 @media #{$desktop} { 
-
+    
+    .wrapper { max-width: $desktopBreakpoint }
 }
 
 
