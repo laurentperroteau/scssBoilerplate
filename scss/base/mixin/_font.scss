@@ -10,22 +10,13 @@
 //         in one single line like: "font: italic 600 15rem/17rem 'Open Sans', sans-serif, sans-serif"
 // @use: @include italic(15 17);
 @mixin openItalic($param: null) {
-    // Set your parameters for the fond-face
+    // Set your parameters for the font-face
     $fontFamily: 'Open Sans', sans-serif;
-    $fontStyle: italic;
+    $fontStyle: italic; // set "" if useless
     $fontWeight: 600;
     
     @include constructFontMixin($fontFamily, $param, $fontStyle, $fontWeight);
 }
-
-
-// Another example of mixin for font-face (not google font)
-// ========================================================
-// @mixin regular($param: null) {
-//     $fontFamily: 'OswaldRegular', sans-serif;
-
-//     @include constructFontMixin($fontFamily, $param);
-// }
 
 
 // Example for "classic" web font
