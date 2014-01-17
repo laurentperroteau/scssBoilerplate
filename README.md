@@ -15,7 +15,7 @@ _To differentiate those mixins from Compass, naming in CamelCase ._
 ## Sprites
 
 ```css
-.elem:before { @include sprite(nameIcon); @extend %icon } // return a normal and retina version
+.elem { @include sprite(nameIcon); @extend %icon } // return a normal and retina version
 ```
 __Require__ : 2 images with the same name (in folders `/icon` and `/icon2x`) and uncomment import of sprite.scss.
 
