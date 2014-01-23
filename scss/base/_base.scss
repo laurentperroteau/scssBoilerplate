@@ -48,9 +48,9 @@ $tabletBreakpoint: 720px;
 $desktopBreakpoint: 980px;
 
 // @use: @media #{$mobile} { //styles... }
-$mobile: "only screen and (max-width: #{$tabletBreakpoint})";
+$mobile: "only screen and (max-width: #{$tabletBreakpoint - 1})";
 $higher: "only screen and (min-width: #{$tabletBreakpoint})";
-$tablet: "only screen and (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint})";
+$tablet: "only screen and (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint - 1})";
 $desktop: "only screen and (min-width: #{$desktopBreakpoint})";
 
 
