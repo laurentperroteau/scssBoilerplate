@@ -71,9 +71,9 @@
 //         color: $colorPlaceholder;
 //     }
 @mixin placeholder {
-    &:-moz-placeholder { @content; }
-    &::-moz-placeholder { @content; }
-    &:-ms-input-placeholder { @content; }
+    &:-moz-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder,
     &::-webkit-input-placeholder { @content; } 
 }
 
