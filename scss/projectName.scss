@@ -2,66 +2,47 @@
 /* ::: P R O J E C T   N A M E ::: */
 /* ------------------------------- */
 
-// C O M P A S S (import only necessary)
-// -------------------------------------
 
-@import "compass/utilities/sprites/base";
-@import "compass/css3/images";
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
-@import "compass/css3/box-sizing";
-@import "compass/css3/opacity";
-@import "compass/css3/transition";
-@import "compass/css3/transform";
-@import "compass/typography/text/force-wrap";
+// 0 - B A S E 
+// -----------
+@import "0-base/base"; // => variables and custom mixins/functions
+
+// Uncomment to active sprite (need at least 1 image in /icon and /icon-2x folders)
+//@import "0-base/sprite";
 
 
+// 1 - G L O B A L
+// ---------------
 
-// B A S E (variables and custom mixins/functions)
-// -----------------------------------------------
-
-@import "base/mixin";
-
-@import "base/base"; // => all variables
-
-
-
-// G L O B A L (global style for sections and pages)
-// ------------------------------------------------
- 
 /* Reset of Eric Mayer */
 @import "compass/reset";
 
-@import "global/helpers";
+@import "1-global/helpers";
 
-@import "global/typography";
+@import "1-global/typography";
 
-// Uncomment to active sprite (need at least 1 image in /icon and /icon-2x folders)
-// @import "global/sprite";
+@import "1-global/layout";
 
-@import "global/layout";
-
-@import "global/form";
+@import "1-global/form";
 
 
+// 2 - M O D U L E
+// ---------------
+@import "2-module/block";
 
-// S E C T I O N (section/block used in all pages)
-// -------------------------------------------------------------
 
-@import "section/block";
-
-@import "section/header";
+// 3 - A R E A
+// -----------
+@import "3-area/header";
 
 
 
-// P A G E (specific stylesheet of type of page)
-// --------------------------------------------
-
-@import "page/page";
+// 4 - P A G E (specific stylesheet of type of page)
+// -------------------------------------------------
+@import "4-page/page";
 
 
 
 // Conditional overrides
 // ----------------------
-
-@import "global/conditional";
+@import "1-global/conditional";

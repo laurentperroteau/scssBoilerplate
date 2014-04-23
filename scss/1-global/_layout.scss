@@ -1,0 +1,115 @@
+/* -------------------- */
+/* ::: L A Y O U T  ::: */
+/* -------------------- */
+
+*, *:before, *:after { @include box-sizing(border-box) }
+
+ul, li { list-style: none; margin: 0; padding: 0 }
+
+img { max-width: 100%; height: auto }
+
+body {
+    background: $backBody;
+}
+
+.wrapper {
+    max-width: $mobileBreakpoint;
+    margin: 0 auto;
+}
+
+
+// ::: M O B I L E ::: //
+// ------------------- //
+
+@media #{$mobile} { 
+
+}
+
+
+// ::: H I G H E R  (tablet and desktop) ::: //
+// ----------------------------------------- //
+
+@media #{$higher} { 
+
+}
+
+
+// ::: T A B L E T ::: //
+// ------------------- //
+
+@media #{$tablet} { 
+    
+    .wrapper { max-width: $tabletBreakpoint }
+}
+
+// ::: D E S K T O P ::: //
+// --------------------- //
+
+@media #{$desktop} { 
+    
+    .wrapper { max-width: $desktopBreakpoint }
+}
+
+
+/* ::: V I S I B I L I T Y ,  F L O A T  &  J A V A S C R I P T  C L A S S E S ::: */
+/* --------------------------------------------------------------- */
+
+// ".hide-m", "hide-h", "hide-t" and "hide-d" are classes to hide according to the device
+// @use: <div class="hide-m">...</div> => hide element only on mobile
+
+// ".left", ".left-m", ".left-h" etc... are classes to float according to the device
+// @use: <div class="left-d">...</div> => float elelement only on desktop
+
+// "#m", "#t", "h" and "d" are ids useful for JavaScript
+// @add in html: <span id="m"></span><span id="h"></span><span id="t"></span><span id="d"></span>
+// @use: if( document.getElementById(id).style.display=="block" ) { // do something... }
+
+.left { float: left }
+.right { float: right }
+
+@media #{$mobile} { 
+
+    #m { display: block !important }
+    #h, #t, #d, .hide-m { display: none !important }
+
+    .left-m { float: left }
+    .right-m {float: right }
+
+    .left-h, .right-h { float: none }
+}
+@media #{$higher} { 
+
+    #h { display: block !important }
+    #m, #t, #d, .hide-h { display: none !important }
+
+    .left-h { float: left }
+    .right-h {float: right }
+
+    .left-m, .right-m { float: none }
+}
+@media #{$tablet} { 
+
+    #t { display: block !important }
+    #m, #d, .hide-t { display: none !important }
+
+    .left-t { float: left }
+    .right-t {float: right }
+
+    .left-m, .right-m, .left-d, .right-d { float: none }
+}
+@media #{$desktop} { 
+
+    #d { display: block !important }
+    #m, #t, .hide-d { display: none !important }
+
+    .left-d { float: left }
+    .right-d { float: right }
+
+    .left-m, .right-m, .left-t, .right-t { float: none }
+}
+
+
+// Visibility class for the touch enabled devices of modernizr
+// @see: http://modernizr.com/docs/#touch
+.touch .no-on-touch,
+.no-touch .yes-on-touch { display: none }

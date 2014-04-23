@@ -1,0 +1,63 @@
+
+/* --------------------- */
+/* ::: H E L P E R S ::: */
+/* --------------------- */
+
+
+// Clearfix 
+// @see: http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+.cf:after, %cf:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+// Prevent any object from being highlighted upon touch event
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+// IE Fix: Bicubic Scaling for Images
+// @see: http://css-tricks.com/ie-fix-bicubic-scaling-for-images/
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+// Fonts looks better in chrome:
+// @see: http://maxvoltar.com/archive/-webkit-font-smoothing
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+}
+
+// Remove text-shadow in selection highlight: h5bp.com/i
+// These selection rule sets have to be separate.
+// Customize the background color to match your design.
+::-moz-selection {
+    background: $orange;
+    color: $gray1; text-shadow: none;
+}
+::selection {
+    background: $orange;
+    color: $gray1; text-shadow: none;
+}
+
+// Remove the gap between images, videos, audio and canvas and the bottom of their containers: h5bp.com/i/440
+audio, canvas, img, video { vertical-align: middle }
+
+// Remove default fieldset styles.
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+// Allow only vertical resizing of textareas.
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+// A hack for HTML5 contenteditable attribute on mobile
+textarea[contenteditable] {
+    -webkit-appearance: none;
+}
