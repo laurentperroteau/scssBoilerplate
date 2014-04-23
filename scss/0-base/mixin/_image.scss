@@ -8,24 +8,47 @@
 // @important: all image sizes "retina" must be exactly twice of normal image
 // @important: never call this mixin inside media queries
 // @see: change path and selector in base.scss
-// @use: .elem:before {
-//          @include sprite(arrow); @extend %icon;
-//       }
 // @idea: http://www.vtcreative.fr/blog/creation-de-sprites-avec-sass-et-compass/ (in french)
-@mixin sprite($iconName) {
+@mixin sprite($param: null) {
 
-    &:#{$pseudoSelector} {
+    // Declare and get variables
+    $iconName: null; $selector: null;
+
+    @if $param              { $iconName: nth($param, 1); }
+    @if length($param) >= 2 { 
+        $selector: nth($param, 2);
+    }
+    @else {
+        $selector: $selectorDefault;
+    }
+
+    @if $selector == element {
         background-position: sprite-position($sprites, $iconName);
         height: image-height(sprite-file($sprites, $iconName));
         width: image-width(sprite-file($sprites, $iconName));
-    }
-    
-    @media (-webkit-min-device-pixel-ratio: 1.5),
-           (-o-min-device-pixel-ratio: 3/2), 
-           (min-device-pixel-ratio: 1.5) {
-        
-        &:#{$pseudoSelector} {   
+
+        @media (-webkit-min-device-pixel-ratio: 1.5),
+        (-o-min-device-pixel-ratio: 3/2),
+        (min-device-pixel-ratio: 1.5) {
+
             background-position: 0 round(nth(sprite-position($sprites2x, $iconName), 2) / 2);
+        }
+    }
+    @else {
+
+        &:#{$selector} {
+            background-position: sprite-position($sprites, $iconName);
+            height: image-height(sprite-file($sprites, $iconName));
+            width: image-width(sprite-file($sprites, $iconName));
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 1.5),
+        (-o-min-device-pixel-ratio: 3/2),
+        (min-device-pixel-ratio: 1.5) {
+
+            &:#{$selector} {
+              background-position: 0 round(nth(sprite-position($sprites2x, $iconName), 2) / 2);
+            }
         }
     }
 }

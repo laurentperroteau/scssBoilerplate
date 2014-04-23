@@ -40,7 +40,7 @@ $img: "/img/visual/";
 // Sprites
 $spritePath: "icon/*.png";
 $sprite2xPath: "icon-2x/*.png";
-$pseudoSelector: before;
+$selectorDefault: before; // before, after or element
 
 // B R E A K P O I N T
 // ===================

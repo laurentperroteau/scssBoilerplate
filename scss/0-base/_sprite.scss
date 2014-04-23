@@ -5,25 +5,44 @@
 // Class useful for sprite
 // =======================
 // @see: sprite mixin in image.scss
-// @use: .elem:before {
+// @use (with default selector): 
+//      .elem:before {
 //          @include sprite(arrow); @extend %icon;
-//       }
+//      }
+// @use (with other pseudo-selector): 
+//      .elem:after {
+//          @include sprite(arrow after); @extend %icon;
+//      }
+// @use (without pseudo-selector): 
+//      .elem {
+//          @include sprite(arrow element); @extend %icon;
+//      }
 // @warm: if change image in pseudo-selector on event in IE8, 
 //        need regenerate content of pseudo-selector.
 //        Ex: content: ".";
 $sprites: sprite-map($spritePath);
 $sprites2x: sprite-map($sprite2xPath);
 
-.icon:#{$pseudoSelector}, %icon:#{$pseudoSelector} { 
+.iconBefore:before, %iconBefore:before, .iconAfter:after, %iconAfter:after {
     content: '';
     position: relative; z-index: 1; overflow: hidden;
     display: inline-block;
     background-repeat: no-repeat; background-image: sprite-url($sprites); 
-    // We can't call this directly in mixin, Compass will compile each time the import of sprite image
 
     @media (-webkit-min-device-pixel-ratio: 1.5),
            (-o-min-device-pixel-ratio: 3/2), 
            (min-device-pixel-ratio: 1.5) {
+        background-image: sprite-url($sprites2x);
+        background-size: ceil(image-width(sprite-path($sprites2x)) / 2) auto;
+    }
+}
+
+.iconElem, %iconElem {
+    background-repeat: no-repeat; background-image: sprite-url($sprites);
+
+    @media (-webkit-min-device-pixel-ratio: 1.5),
+    (-o-min-device-pixel-ratio: 3/2),
+    (min-device-pixel-ratio: 1.5) {
         background-image: sprite-url($sprites2x);
         background-size: ceil(image-width(sprite-path($sprites2x)) / 2) auto;
     }
