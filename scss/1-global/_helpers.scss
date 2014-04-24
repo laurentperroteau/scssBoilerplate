@@ -4,14 +4,6 @@
 /* --------------------- */
 
 
-// Clearfix 
-// @see: http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
-.cf:after, %cf:after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
 // Prevent any object from being highlighted upon touch event
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
