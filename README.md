@@ -80,7 +80,7 @@ _For all dimensions, we can pass the number without the unit if we want pixeles 
 
 ## Folders
 
-No OOCSS but a necessity of separating code for maintenance: 3 folders whose names should indicate without further explanation that they contain /global, /section and /page.
+No OOCSS but a necessity of separating code for maintenance: 5 folders whose names should indicate without further explanation that they contain /global, /module, /area and /page.
 
 ```
 |
@@ -90,13 +90,14 @@ No OOCSS but a necessity of separating code for maintenance: 3 folders whose nam
 |    |____/icon2x => retina icon
 |
 |____/scss
-     |____/base
+     |____/0-base
      |    |---- base.scss => variables
      |    |____/mixin => mixins files
      |
-     |____/global
-     |____/section
-     |____/page
+     |____/1-global
+     |____/2-module
+     |____/3-area
+     |____/4-page
      |
      |---- projectName.scss
      |---- config.rb
