@@ -41,5 +41,13 @@ strong { font-weight: bold }
 
 em { font-style: italic }
 
-// Wrapping Long Text and URLs
-.force-wrap { @include force-wrap }
+.force-wrap, %force-wrap { @include force-wrap } // Wrapping Long Text and URLs
+
+
+// Placeholder des fonts
+// ============================
+// @use: @extend %interRegular;
+// @warning: Ne pas utiliser dans les médias queries
+.arial, %arial {
+    font-family: arial, 'helvetica', sans-serif;
+}
