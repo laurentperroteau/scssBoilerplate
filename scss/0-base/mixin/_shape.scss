@@ -51,12 +51,12 @@
     @if $direction == up {
         border-left: testUnit( round($width) / 2) solid transparent;
         border-right: testUnit( round($width) / 2) solid transparent;
-        border-bottom: testUnit($width) solid $background;
+        border-bottom: testUnit($height) solid $background;
     }
 
     @if $direction == down {
         border-left: testUnit( round($width) / 2) solid transparent;
         border-right: testUnit( round($width) / 2) solid transparent;
-        border-top: testUnit($width) solid $background;
+        border-top: testUnit($height) solid $background;
     }
 }
