@@ -45,8 +45,8 @@
     @if $param              { $fontSize:   nth($param, 1); }
     @if length($param) >= 2 { $lineHeight: nth($param, 2); }
 
-    font-size: px($fontSize);
-    font-size: rem($fontSize);
+    font-size: toPx($fontSize);
+    font-size: toRem($fontSize);
     
     @if $lineHeight {
         @include lineHeight($lineHeight);
@@ -58,8 +58,8 @@
 // ============================================
 // @param $lineHeight => line-height in px (without "px")
 @mixin lineHeight($lineHeight) {
-    line-height: px($lineHeight);
-    line-height: rem($lineHeight);
+    line-height: toPx($lineHeight);
+    line-height: toRem($lineHeight);
 }
 
 

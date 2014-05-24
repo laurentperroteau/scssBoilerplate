@@ -8,13 +8,13 @@
 }
 
 // Converted pixel
-@function px($number) {
+@function toPx($number) {
     @return stripUnits($number) * 1px;
 }
 
 // Converted REM
-@function rem($number) {
-    @return stripUnits($number) / 10 + 0rem
+@function toRem($number) {
+    @return stripUnits($number) / 10 + 0rem;
 }
 
 // Return number with unit px, em, %...
