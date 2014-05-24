@@ -112,52 +112,26 @@
         }
     }
 
-    // Construct style and weight
-    @if $style and $weight {
-        $styleAndWeight: #{$style} #{$weight};
-    }
-
-    // Construct font-size and line-height
-    @if $fontSize and $lineHeight {
-        $sizesPx:  #{ px($fontSize) }/#{ px($lineHeight) };
-        $sizesRem: #{ rem($fontSize) }/#{ rem($lineHeight) };
-    }
-    @else if $fontSize {
-        $sizesPx:  #{ px($fontSize) };
-        $sizesRem: #{ rem($fontSize) };
-    }
-
-    // Final style without sizes
-    @if not $sizesRem 
-    {
+    @if $fontFamily {
         font-family: $fontFamily;
-
-        @if $style and $weight {
-            font-style: $style;
-            font-weight: $weight;
-        }
-        @if $style and not $weight {
-            font-style: $style;
-        }
-        @else if not $style and $weight {
-            font-weight: $weight;
-        }
     }
-    // Final style with sizes
-    @else 
-    {
-        @if $styleAndWeight {
-            font: #{$styleAndWeight} #{$sizesPx} $fontFamily;
-            font: #{$styleAndWeight} #{$sizesRem} $fontFamily;
-        }
-        @else if ($style or $weight) {
-            font: #{$style}#{$weight} #{$sizesPx} $fontFamily;
-            font: #{$style}#{$weight} #{$sizesRem} $fontFamily;
-        }
-        @else if not $style and not $weight {
-            font: #{$sizesPx} $fontFamily;
-            font: #{$sizesRem} $fontFamily;
-        }
+    
+    @if $style {
+        font-style: $style;
+    }
+
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $fontSize and $lineHeight {
+        @include fontSize($fontSize $lineHeight);
+    }
+    @else if $fontSize and not $lineHeight {
+        @include fontSize($fontSize);
+    }
+    @else if not $fontSize and $lineHeight {
+        @include lineHeight($lineHeight);
     }
 
     // @debug "fontFamily : " $fontFamily;
