@@ -22,7 +22,7 @@
         $selector: $selectorDefault;
     }
 
-    @if $selector == element {
+    @if $selector == elem {
         background-position: sprite-position($sprites, $iconName);
         width: image-width(sprite-file($sprites, $iconName));
         height: image-height(sprite-file($sprites, $iconName));
