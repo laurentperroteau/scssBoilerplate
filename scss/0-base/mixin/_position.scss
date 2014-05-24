@@ -46,7 +46,7 @@
         height: testUnit($size); line-height: testUnit($size);
     }
     @else {
-        @warn "You need pass a size at alignVertically mixin."
+        @warn "You need pass a size at alignVertically mixin.";
     }
 }
 
@@ -58,16 +58,22 @@
 @mixin absolute($positions) 
 {
     position: absolute; 
-    @include position($positions);
+
+    @if $positions {   
+        @include position($positions);
+    }
 }
 
 
 // Set fixed positions (@see absolute)
 // ===================================
-@mixin fixed($param) 
+@mixin fixed($positions) 
 {
     position: fixed; 
-    @include position($param);
+    
+    @if $positions {   
+        @include position($positions);
+    }
 }
 
 
