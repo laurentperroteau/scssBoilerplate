@@ -1,0 +1,85 @@
+
+// ::: T E S T
+
+@import "projectName";
+
+body { padding: 30px }
+
+.font-size { @include fontSize(15) }
+
+.line-height { @include lineHeight(17) }
+
+.font-size-line-height { @include fontSize(15 17) }
+
+.font-face { @include openItalic }
+
+.font-face-15 { @include openItalic(15) }
+
+.font-face-15-17 { @include openItalic(15 17) }
+
+.arial { @include arial }
+
+.arial-bold { @include arial(600) }
+
+.arial-italic { @include arial(italic) }
+
+.arial-bold-15 { @include arial(600 15) }
+
+.arial-bold-15-17 { @include arial(600 15 17) }
+
+.align-vertically { @include alignVertically(20) }
+
+.placeholder input {
+    width: 300px;
+    @include placeholder {
+        @include fontSize(13); color: $orange;
+    };
+}
+
+//.sprite { @include sprite(arrowRight); @extend %iconBefore }
+
+//.sprite-after { @include sprite(arrowLeft after); @extend %iconAfter }
+
+//.sprite-elem { @include sprite(arrowDown elem); @extend %iconElem }
+
+.cl-padding { @include clPadding(top right) }
+
+.cl-margin { @include clMargin }
+
+.position { @include position(5 20) }
+
+.absolute { @include absolute(auto 0 0) }
+
+.fixed { @include fixed(auto 2em 5%) }
+
+.cl-position { @include clPosition(top right) }
+
+.gradient {
+    @include cube(100);
+    @include linearGradient(#666 #ccc);
+}
+
+.gradient-horizontal {
+    width: response(200 600); height: 60px;
+    @include linearGradient($orange adjust-lightness($orange, 20) horizontal);
+}
+
+.transition {
+    @include trans(margin);
+
+    &:hover { margin-left: 100px }
+}
+
+.triangle{
+    
+    &:after {
+        content: '';
+        display: block;
+        @include triangle(20 20 down $orange);
+    }
+}
+
+.device {
+    width: 200px; @include alignVertically(50);
+    border: 1px solid black;
+}
