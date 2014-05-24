@@ -42,6 +42,12 @@ $spritePath: "icon/*.png";
 $sprite2xPath: "icon-2x/*.png";
 $selectorDefault: before; // before, after or element
 
+// Fot device with pixel high density
+$pixels2x: "(-webkit-min-device-pixel-ratio: 1.5),
+            (-o-min-device-pixel-ratio: 3/2),
+            (min-device-pixel-ratio: 1.5)";
+
+
 // B R E A K P O I N T
 // ===================
 
