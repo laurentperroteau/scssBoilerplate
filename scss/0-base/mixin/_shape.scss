@@ -40,23 +40,27 @@
         border-top: testUnit( round($height) / 2) solid transparent;
         border-bottom: testUnit( round($height) / 2) solid transparent;
         border-left: testUnit($width) solid $background;
+        border-right: none;
     }
 
     @if $direction == left {
         border-top: testUnit( round($height) / 2) solid transparent;
         border-bottom: testUnit( round($height) / 2) solid transparent;
         border-right: testUnit($width) solid $background;
+        border-left: none;
     }
 
     @if $direction == up {
         border-left: testUnit( round($width) / 2) solid transparent;
         border-right: testUnit( round($width) / 2) solid transparent;
         border-bottom: testUnit($height) solid $background;
+        border-top: none;
     }
 
     @if $direction == down {
         border-left: testUnit( round($width) / 2) solid transparent;
         border-right: testUnit( round($width) / 2) solid transparent;
         border-top: testUnit($height) solid $background;
+        border-bottom: none;
     }
 }
