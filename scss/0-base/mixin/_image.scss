@@ -26,10 +26,6 @@
         background-position: sprite-position($sprites, $iconName);
         width: image-width(sprite-file($sprites, $iconName));
         height: image-height(sprite-file($sprites, $iconName));
-
-        @media #{$pixels2x} {
-            background-position: 0 round(nth(sprite-position($sprites2x, $iconName), 2) / 2);
-        }
     }
     @else {
 
@@ -37,13 +33,6 @@
             background-position: sprite-position($sprites, $iconName);
             height: image-height(sprite-file($sprites, $iconName));
             width: image-width(sprite-file($sprites, $iconName));
-        }
-
-        @media #{$pixels2x} {
-
-            &:#{$selector} {
-              background-position: 0 round(nth(sprite-position($sprites2x, $iconName), 2) / 2);
-            }
         }
     }
 }
