@@ -7,15 +7,15 @@
 // @see: sprite mixin in image.scss
 // @use (with default selector): 
 //      .elem:before {
-//          @include sprite(arrow); @extend %icon;
+//          @include sprite(arrow); @extend %iconBefore;
 //      }
 // @use (with other pseudo-selector): 
 //      .elem:after {
-//          @include sprite(arrow after); @extend %icon;
+//          @include sprite(arrow after); @extend %iconAfter;
 //      }
 // @use (without pseudo-selector): 
 //      .elem {
-//          @include sprite(arrow element); @extend %icon;
+//          @include sprite(arrow element); @extend %iconElem;
 //      }
 // @warm: if change image in pseudo-selector on event in IE8, 
 //        need regenerate content of pseudo-selector.
